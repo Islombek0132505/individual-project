@@ -42,7 +42,7 @@ export function UsersTableClient({ initialUsers }: UsersTableClientProps) {
     if (a[sortBy] < b[sortBy]) return sortOrder === "asc" ? -1 : 1;
     if (a[sortBy] > b[sortBy]) return sortOrder === "asc" ? 1 : -1;
     return 0;
-  });
+  })
 
   const handleSort = (field: keyof IUser) => {
     const newOrder = sortBy === field && sortOrder === "asc" ? "desc" : "asc";

@@ -35,7 +35,7 @@ export default function SelectionSortVisualizer() {
     for (let i = 0; i < n - 1; i++) {
       let minIdx = i;
 
-      setHighlight(i); 
+      setHighlight(i);
 
       for (let j = i + 1; j < n; j++) {
         if (arr[j] < arr[minIdx]) {
@@ -57,7 +57,7 @@ export default function SelectionSortVisualizer() {
     }
 
     setIsSorting(false); 
-  };
+  }
 
   return (
     <div className="bg-gradient-to-br from-indigo-100 to-white flex flex-col items-center gap-8 w-full p-12 rounded-3xl border-2">
