@@ -3,7 +3,7 @@ export interface IProduct {
     _id: string
     imageUrl: string
     productName: string
-    price: string
+    price: number
     rating: number
     data: string
 }

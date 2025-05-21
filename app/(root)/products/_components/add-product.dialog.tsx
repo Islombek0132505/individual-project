@@ -1,28 +1,28 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
 import { DialogTitle } from "@radix-ui/react-dialog"
-import CreateUserForm from "./add-user.form"
 import { useState } from "react"
+import CreateProductForm from "./add-product.form"
 
-function AddUserDialog() {
+function AddProductDialog() {
 
     const [open, setOpen] = useState(false)
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline">Добавить пользователя</Button>
+                <Button variant="outline">Добавить продукт</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Добавить пользователя</DialogTitle>
+                    <DialogTitle>Добавить новый продукт</DialogTitle>
                 </DialogHeader>
-                <CreateUserForm setOpen = {setOpen}/>
+                <CreateProductForm setOpen = {setOpen}/>
             </DialogContent>
         </Dialog>
     )
 }
 
-export default AddUserDialog
+export default AddProductDialog

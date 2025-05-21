@@ -6,7 +6,7 @@ import { Toaster } from "sonner"
 function Layout ({children}: ChildProps) {
     return <div>
         <Header/>
-        <main className="pt-24 px-12">
+        <main className="pt-24 pb-12 px-12">
             {children}
         </main>
         <Footer/>

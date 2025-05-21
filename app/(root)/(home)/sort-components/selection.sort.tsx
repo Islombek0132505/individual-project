@@ -60,7 +60,7 @@ export default function SelectionSortVisualizer() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-indigo-100 to-white flex flex-col items-center gap-8 w-full p-12 rounded-3xl">
+    <div className="bg-gradient-to-br from-indigo-100 to-white flex flex-col items-center gap-8 w-full p-12 rounded-3xl border-2">
       <h1 className="text-4xl font-bold text-indigo-700">🏗️ Selection Sort Visualizer</h1>
 
       <div className="flex flex-col md:flex-row items-center gap-4 max-w-2xl w-full">

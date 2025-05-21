@@ -4,32 +4,31 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
-import { userSchema } from "@/lib/validation"
-import { createUser } from "@/actions/user.action"
+import { productScheme } from "@/lib/validation"
+import { createProduct } from "@/actions/product.action"
 
-function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
+function CreateProductForm({setOpen}: {setOpen: (open: boolean) => void}) {
 
     const [isLoading, setLoading] = useState(false)
 
-    const form = useForm<z.infer<typeof userSchema>>({
-        resolver: zodResolver(userSchema),
+    const form = useForm<z.infer<typeof productScheme>>({
+        resolver: zodResolver(productScheme),
         defaultValues: {
-            name: "",
-            surname: "",
-            age: "",
-            payment: "",
-            status: ""
+            imageUrl: "",
+            productName: "",
+            price: "",
+            rating: "",
+            data: "",
         }
     })
 
-    async function onSubmit(values: z.infer<typeof userSchema>){
-        const {age, payment} = values
-        const promise = createUser({...values, age: +age, payment: +payment})
+    async function onSubmit(values: z.infer<typeof productScheme>){
+        const {price, rating} = values
+        const promise = createProduct({...values, price: +price, rating: +rating})
             .then(() => {
                 form.reset()
             })
@@ -42,7 +41,7 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
             loading: "Loading...",
             success: "Successfully",
             error: "Error"
-        })
+        }) 
     }
 
     return (
@@ -52,16 +51,16 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
                 
                 <FormField
                     control={form.control}
-                    name="name"
+                    name="imageUrl"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                            Имя пользователя<span className='text-red-500'> *</span>
+                            URL-адрес изображения продукта<span className='text-red-500'> *</span>
                             </FormLabel>
                             <FormControl>
                                 <Input
                                     disabled = {isLoading}
-                                    placeholder="Islombek..." 
+                                    placeholder="https://image.png..." 
                                     {...field} 
                                     className="bg-secondary"
                                 />
@@ -72,17 +71,17 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
                 />
                 <FormField
                     control={form.control}
-                    name="surname"
+                    name="productName"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                            Фамилия пользователя<span className='text-red-500'> *</span>
+                            Название продукта<span className='text-red-500'> *</span>
                             </FormLabel>
                             <FormControl>
                                 <Input
                                     disabled = {isLoading}
                                     className="bg-secondary"
-                                    placeholder="Abdurazzoqov..."
+                                    placeholder="iPhone..."
                                     {...field}
                                 />
                             </FormControl>
@@ -93,11 +92,11 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
 
                 <FormField
                     control={form.control}
-                    name="age"
+                    name="price"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                            Возраст<span className='text-red-500'> *</span>
+                            Цена<span className='text-red-500'> *</span>
                             </FormLabel>
                             <FormControl>
                                 <Input
@@ -114,11 +113,11 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
                 
                 <FormField
                     control={form.control}
-                    name="payment"
+                    name="rating"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                            Оплата<span className='text-red-500'> *</span>
+                            Рейтинг<span className='text-red-500'> *</span>
                             </FormLabel>
                             <FormControl>
                                 <Input
@@ -126,6 +125,7 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
                                     {...field} 
                                     className="bg-secondary"
                                     type="number"
+                                    max={5}
                                 />
                             </FormControl>
                             <FormMessage />
@@ -135,32 +135,20 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
                     
                 <FormField
                     control={form.control}
-                    name="status"
+                    name="data"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                            Статус
+                            Дата
                                 <span className='text-red-500'> *</span>
                             </FormLabel>
                             <FormControl>
-                                <Select
-                                    onValueChange={field.onChange}
-                                >
-                                    <SelectTrigger className="w-full bg-secondary">
-                                        <SelectValue placeholder={'Select'} />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value={"Succesfully"}>
-                                            Succesfully
-                                        </SelectItem>
-                                        <SelectItem value={"Loading"}>
-                                            Loading
-                                        </SelectItem>
-                                        <SelectItem value={"Error"}>
-                                            Error
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                <Input
+                                    disabled = {isLoading}
+                                    {...field} 
+                                    className="bg-secondary"
+                                    type="string"
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -191,4 +179,4 @@ function CreateUserForm({setOpen}: {setOpen: (open: boolean) => void}) {
     )
 }
 
-export default CreateUserForm
+export default CreateProductForm

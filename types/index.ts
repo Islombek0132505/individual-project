@@ -15,7 +15,7 @@ export interface IUser {
 export interface IProduct {
     imageUrl: string
     productName: string
-    price: string
+    price: number
     rating: number
     data: string
 }

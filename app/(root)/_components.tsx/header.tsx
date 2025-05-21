@@ -12,7 +12,7 @@ function Header() {
     return (
         <div className="w-full h-20 flex items-center justify-between border-b-2 bg-white fixed z-50 px-10">
             <h1 className="text-3xl font-medium">
-                Individual project
+                Индивидуальный проект
             </h1>
             <div className="flex items-center gap-4">
                 {navLinks.map((item, index) => (

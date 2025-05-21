@@ -9,7 +9,7 @@ export interface ICreateUser {
 export interface ICreateProduct {
     imageUrl: string
     productName: string
-    price: string
+    price: number
     rating: number
     data: string
 }
