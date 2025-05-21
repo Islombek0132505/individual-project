@@ -1,12 +1,15 @@
 import { IProduct } from "@/app.types"
+import Image from "next/image"
 
 function ProductCard(product: IProduct) {
     return (
         <div className="flex flex-col rounded-2xl overflow-hidden border-4 border-gray-400">
-            <img 
+            <Image
                 src={product.imageUrl}
                 alt="product image" 
                 className="w-full h-[220px] object-contain"
+                width={400}
+                height={220}
             />
             <div className="p-4 border-t-4 border-gray-400 flex flex-col gap-2">
 
