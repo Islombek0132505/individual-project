@@ -1,5 +1,4 @@
 import { IProduct } from "@/app.types"
-import { Stars } from "lucide-react"
 
 function ProductCard(product: IProduct) {
     return (

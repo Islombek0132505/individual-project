@@ -26,7 +26,7 @@ interface UsersTableClientProps {
 }
 
 export function UsersTableClient({ initialUsers }: UsersTableClientProps) {
-  const [users, setUsers] = useState<IUser[]>(initialUsers);
+  const [users] = useState<IUser[]>(initialUsers);
   const [sortBy, setSortBy] = useState<null | keyof IUser>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [selectedStatus, setSelectedStatus] = useState<typeof STATUS_OPTIONS[number]>("All");

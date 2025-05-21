@@ -22,15 +22,15 @@ export default function SelectionSortVisualizer() {
       if (nums.length < 2) throw new Error("введите не менее 2 цифр");
       setArray(nums);
       setError("");
-    } catch (err: any) {
-      setError(err.message || "Ошибка формата");
+    } catch {
+      throw new Error("Ошибка формата");
     }
   };
 
   const selectionSort = async () => {
     setIsSorting(true);
-    let arr = [...array];
-    let n = arr.length;
+    const arr = [...array];
+    const n = arr.length;
 
     for (let i = 0; i < n - 1; i++) {
       let minIdx = i;
